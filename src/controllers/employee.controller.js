@@ -14,16 +14,18 @@ export const getEmployees = async (req, res)=> {
 //get employee by id
 export const getEmployee = async (req, res) => {
     try {
-        const { id } = req.params;
-        const {rows} = await pool.query("SELECT * FROM employee WHERE id = ?",
-        [id]);
+    const { id } = req.params;
+    const [rows] = await pool.query("SELECT * FROM employee WHERE id = ?", [
+      id,
+    ]);
 
-        if (rows.length <=0){
-            return res.status(400).json({ message: "The employee does not exists"});
-        }
-    } catch (error) {
-        return res.status(500).json({ message: "Something goes wrong "});
+    if (rows.length <= 0) {
+      return res.status(404).json({ message: "Employee not found" });
     }
+    res.json(rows[0]);
+  } catch (error) {
+    return res.status(500).json({ message: "Something goes wrong" });
+  }
 };
 
 //delete employee by id 
