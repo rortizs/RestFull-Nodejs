@@ -1,0 +1,26 @@
+### GET employees
+GET http://localhost:3000/api/employees
+
+
+### POST ADD EMPLOYEE
+POST http://localhost:3000/api/employees
+Content-Type: application/json
+
+{
+    "name": "Javier Orellana",
+    "salary": 6000
+}
+
+
+### update employee
+PATCH http://localhost:3000/api/employees/5
+Content-Type: application/json
+
+{
+    "name": "Javier Messi",
+    "salary": 6000
+}
+
+### GET  employee by id
+
+get http://localhost:3000/api/employees/5
