@@ -70,7 +70,7 @@ export const updateEmployee = async (req, res) => {
             [name, salary, id]
         );
 
-        if (XPathResult.affectedRows === 0)
+        if (result.affectedRows === 0)
         return res.staus(404).json({ message: "Employee not found"});
 
         const [rows] = await pool.query("SELECT * FROM employee WHERE id = ?",
